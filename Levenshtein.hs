@@ -7,9 +7,9 @@ import Data.List
 
 
 
-lev :: String -> Int -> [String] -> [Bool]
-lev w n (x:xs) = [if ((length x )<= (length w +n) ) then (oneWord w n x) else (False)] ++  lev w n xs
-lev w n []  = []
+levenshtein :: String -> Int -> [String] -> [Bool]
+levenshtein w n (x:xs) = [if ((length x )<= (length w +n) ) then (oneWord w n x) else (False)] ++  levenshtein w n xs
+levenshtein w n []  = []
 
 oneWord w n v
             |Data.Set.null (Data.Set.intersection  (accepting(buildENFA w n)) (evaluateEnfa v (buildENFA w n)))  =  False
